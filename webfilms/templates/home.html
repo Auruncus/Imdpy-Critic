@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="notification">
+    {% if user.is_authenticated %}
+      <h3>Добро пожаловать, {{user.username}}!</h3>
+      {% if message %}
+      <h4> {{message}} </h4>
+      {%endif%}
+    {% else %}
+      <h3>Сначала вам нужно зарегистрироваться</h3>
+    {% endif %}
+</div>
+{% if user.is_authenticated %}
+<h2> Оценить фильм </h2>
+<div class ="container">
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Оценить</button>
+</form>
+</div>
+{% endif %}
+{% endblock %}
