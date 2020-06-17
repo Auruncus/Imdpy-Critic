@@ -12,9 +12,9 @@
     {% endif %}
 </div>
 {% if user.is_authenticated %}
-<h2> Оценить фильм </h2>
+<h2 align="center"> Оценить фильм </h2>
 <div class ="container">
-<form method="post">
+<form method="post" align="center">
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Оценить</button>

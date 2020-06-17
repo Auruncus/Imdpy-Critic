@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for post in posts %}
+<div class="card">
+    <div class="card-stuff">
+      <h2 style = "color: #408BC8;
+      font-weight: 800;
+      font-size: 32px;
+      margin: 10px 0;"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+      <time>published: {{ post.published_date }}</time>
+      <p style = "margin: 10px 0; text-align:left;">{{ post.text|linebreaksbr }}</p>
+      {% if user.is_staff %}
+      <a href="{% url 'delete' post.id %}"><button class="btn btn-large btn-success add" type="button">Delete</button></a>
+      {% endif %}
+</div>
+
+{% endfor %}
+<center><a href="{% url 'post_new' %}"><button class="btn btn-large btn-success add" type="button">Add</button></a></center>
+{% endblock %}
+

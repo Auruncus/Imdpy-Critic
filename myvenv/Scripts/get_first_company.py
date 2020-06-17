@@ -1,4 +1,4 @@
-#!c:\users\user\desktop\final\myvenv\scripts\python.exe
+#!c:\users\user\desktop\final\imdpy-critic\myvenv\scripts\python.exe
 # -*- coding: utf-8 -*-
 """
 get_first_company.py

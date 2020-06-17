@@ -6,28 +6,33 @@
   <link rel="stylesheet" href="{% static 'webfilms/main.css' %}">
 </head>
 <body>
-  <div class="overlay"></div>
-<h1 class="logo">Critic</h1>
-    <h2 class="title">Меню</h2>
-<div class="container-fluid">
-  <a href="/home"><div class="card col-md-2" id="funny"><h3>Домой</h3></div></a>
-{% if user.is_authenticated %}
-<a href="/profile"><div class="card col-md-2" id="scary"><h3>Профиль</h3></div></a>
-<a href="{% url 'logout' %}"><div class="card col-md-2" id="action"><h3>Выйти</h3></div></a>
-{% else %}
-<a href="{% url 'login' %}"><div class="card col-md-2" id="scary"><h3>Логин</h3></div></a>
-<a href="{% url 'signup' %}"><div class="card col-md-2" id="action"><h3>Регистрация</h3></div></a>
-{% endif %}
+<nav>
+  <div id="logo">Critic</div>
+
+  <label for="drop" class="toggle">Menu</label>
+  <input type="checkbox" id="drop" />
+      <ul class="menu">
+          <li><a href="/home">Домой</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="/forum">Чат-форум</a></li>
+          <li><a href="/profile">Профиль</a></li>
+          <li><a href="{% url 'logout' %}">Выйти</a></li>
+          {% else %}
+          <li><a href="{% url 'login' %}">Логин</a></li>
+          <li><a href="{% url 'signup' %}">Регистрация</a></li>
+          {% endif %}
+      </ul>
+</nav>
 </div>
-    <h2 class="title">Featured</h2>
     <main>
       <div id="stuff">
         {% block content %}
         {% endblock %}
       </div>
     </main>
+</body>   
   
-</body>
+
 
 </html>
 
