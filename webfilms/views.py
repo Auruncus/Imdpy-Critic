@@ -138,25 +138,7 @@ def rate_movie(request, imdb_id, rating):
         mrating = MovieRating(user = request.user, imdb_movie_id=imdb_id,
                                 title = movie["title"], rating=rating)
         mrating.save()
-        for director in movie["director"]:
-            drating = DirectorRating(user=request.user, director = director["name"],
-                                        imdb_person_id = director.personID, rating = rating)
-            drating.save()
-        for writer in movie["writer"]:
-            wrating = WriterRating(user=request.user, writer = writer["name"],
-                                    imdb_person_id = writer.personID, rating = rating)
-            wrating.save()
-        for index in range(6):
-            actor = movie["cast"][index]
-            arating = ActorRating(user=request.user, actor = actor["name"],
-                                    imdb_person_id=actor.personID, rating=rating)
-            arating.save()
-
-        for genre in movie["genres"]:
-            grating = GenreRating(user=request.user, genre = genre, rating = rating)
-
-            grating.save()
-
+        
     except:
         pass
 
